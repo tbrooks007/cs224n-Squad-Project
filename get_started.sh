@@ -8,13 +8,9 @@ EXP_DIR=$HEAD_DIR/experiments
 
 mkdir -p $EXP_DIR
 
-# Creates the environment
-#conda create -n squad python=2.7
-virtualenv -p /usr/bin/python2.7 squad
-
-# Activates the environment
-#source activate squad
-source squad/bin/activate
+# Creates the environment python 2.7 virtual env
+# this activates and sets this env as the current virtual env
+mkvirtualenv -p /usr/local/bin/python2 tensorflow-cpu-27
 
 # pip install into environment
 pip install -r requirements.txt

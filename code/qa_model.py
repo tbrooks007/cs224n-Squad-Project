@@ -273,12 +273,12 @@ class QAModel(object):
            # Implement better question_passage matching
             v_P = rnet_layer.build_graph_qp_matching(context_hiddens, question_hiddens, self.qn_mask, self.context_mask, self.FLAGS.context_len, self.FLAGS.question_len)
 
-            self.rnet_attention = v_P
-
-            self.rnet_attention = tf.squeeze(self.rnet_attention, axis=[2])  # shape (batch_size, seq_len)
-
-            # Take softmax over sequence
-            _, self.rnet_attention_probs = masked_softmax(self.rnet_attention, self.context_mask, 1)
+            # self.rnet_attention = v_P
+            #
+            # self.rnet_attention = tf.squeeze(self.rnet_attention, axis=2)  # shape (batch_size, seq_len)
+            #
+            # # Take softmax over sequence
+            # _, self.rnet_attention_probs = masked_softmax(self.rnet_attention, self.context_mask, 1)
 
             h_P = rnet_layer.build_graph_sm_matching(context_hiddens, question_hiddens, self.qn_mask, self.context_mask,
                                                      self.FLAGS.context_len, self.FLAGS.question_len, v_P)
